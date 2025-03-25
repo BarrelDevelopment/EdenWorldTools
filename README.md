@@ -12,7 +12,7 @@
 <br />
 <div align="center">
   <a href="http://edengame.net/">
-    <img src="readme_src/EdenLandscape.png" alt="Logo" width="80" height="80">
+    <img src="readme_src/EdenLandscape.png" alt="Logo"">
   </a>
 
   <h3 align="center">Best-README-Template</h3>
