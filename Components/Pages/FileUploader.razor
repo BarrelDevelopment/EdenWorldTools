@@ -1,0 +1,89 @@
+﻿
+@page "/upload"
+@rendermode InteractiveServer
+
+@using System.IO
+@using System.Drawing;
+@using EdenWorldTools.Models
+@using EdenWorldTools.Services
+@using Microsoft.AspNetCore.Components.Forms
+@using System.Drawing.Drawing2D;
+@using System.Drawing.Imaging;
+
+<h3>File Picker</h3>
+
+<InputFile OnChange="HandleFileSelected" />
+
+@if (BitmapBase64 != null) {
+     <div @onwheel="ZoomImage" style="overflow:hidden; display:inline-block; border:1px solid #ddd;">
+        <img src="data:image/png;base64,@BitmapBase64" 
+             alt="Bitmap Image" 
+             style="width:400px; height:300px; transform: scale(@Scale); transition: transform 0.2s ease-out;" />
+    </div>
+} else {
+    <p>Erzeuge Bitmap...</p>
+}
+
+@if (selectedFileName != null) {
+    <p>Selected file: @selectedFileName</p>
+}
+
+@code {
+    private string? selectedFileName;
+    private const long MaxFileSize = 2L * 1024 * 1024 * 1024; // 2GB
+    
+    private string? BitmapBase64;
+    private double Scale = 1.0; // Startskalierung
+
+
+    private void ZoomImage(WheelEventArgs e) {
+        // Zoom-Geschwindigkeit anpassen
+        const double zoomSpeed = 0.1;
+
+        // Maus-Rad Richtung bestimmen
+        if (e.DeltaY < 0)
+            Scale += zoomSpeed;
+        else if (e.DeltaY > 0 && Scale > zoomSpeed)
+            Scale -= zoomSpeed;
+
+        // Skalierung begrenzen (min. 0.2x, max. 5x)
+        Scale = Math.Clamp(Scale, 0.2, 5.0);
+
+        StateHasChanged();
+    }
+
+    private async Task HandleFileSelected(InputFileChangeEventArgs e) {
+        IBrowserFile file = e.File;
+        selectedFileName = file.Name;
+        // Read the file content
+        using (var stream = new MemoryStream()) {
+            Console.WriteLine("Reading file content...");
+            Console.WriteLine($"File size: {file.Size}");
+            await file.OpenReadStream(MaxFileSize).CopyToAsync(stream);
+            Console.WriteLine($"File content read. Length: {stream.Length}");
+
+            Console.WriteLine("File content read.");
+            byte[] fileData = stream.ToArray();
+
+            // Process the file data (e.g., load the world)
+            Console.WriteLine($"Data length: {fileData.Length}");
+            EdenWorldLoader loader = new EdenWorldLoader();
+            EdenWorld world = loader.Load(fileData);
+
+            EdenWorldDrawer drawEngien = new EdenWorldDrawer();
+            drawEngien.World = world;
+            drawEngien.CreateBitmap();
+            Bitmap? map = drawEngien.Canvas;
+
+
+            // Bitmap in Base64 umwandeln
+            using var memoryStream = new MemoryStream();
+            map.Save(memoryStream, System.Drawing.Imaging.ImageFormat.Png);
+
+            BitmapBase64 = Convert.ToBase64String(memoryStream.ToArray());
+
+            // Do something with the loaded world
+            Console.WriteLine($"Loaded world: {world.WorldName}");
+        }
+    }
+}

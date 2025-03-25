@@ -1,4 +1,5 @@
 ﻿using System.Drawing;
+using System.Reflection.Metadata.Ecma335;
 
 namespace EdenWorldTools.Models {
     public class EdenWorld {
@@ -10,7 +11,6 @@ namespace EdenWorldTools.Models {
         private string? edenFileName;
         private string? edenFileNameSuffix;
         private string? worldName;
-        private string? worldNameSuffix;
         private DateTime createDate;
 
 
@@ -31,19 +31,7 @@ namespace EdenWorldTools.Models {
 
             }
         }
-        public string WorldName {
-#pragma warning disable CS8603 // Possible null reference return.
-            get => worldName;
-#pragma warning restore CS8603 // Possible null reference return.
-            set {
-                string[] parts = value.Split(['.']);
-                if (parts.Length != 2) {
-                    throw new ArgumentException("WorldName must be in the format 'worldName.suffix'");
-                }
-                worldName = parts[0];
-                worldNameSuffix = parts[1];
-            }
-        }
+        public string WorldName { get => worldName; set => worldName = value; }
 
         public DateTime CreateDate {
             get {
@@ -58,10 +46,5 @@ namespace EdenWorldTools.Models {
             createDate = new DateTime(1970, 1, 1, 0, 0, 0, DateTimeKind.Utc).AddSeconds(time);
             return createDate;
         }
-
-        public string GetWorldNameWithSuffix() {
-            return $"{worldName}.{worldNameSuffix}";
-        }
-
     }
 }
