@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c36uuid0g2cej"]
+
+[ext_resource type="Script" path="res://scripts/utilities/eden_world_canvas.gd" id="1_glmpk"]
+
+[node name="EdenWorldViewer" type="Node2D"]
+
+[node name="EdenWorldCanvas" type="Node2D" parent="."]
+script = ExtResource("1_glmpk")

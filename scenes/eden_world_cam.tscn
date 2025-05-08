@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://btoqxu5cuvf4"]
+
+[ext_resource type="Script" path="res://scripts/utilities/eden_world_canvas_cam.gd" id="1_54h1n"]
+
+[node name="EdenWorldCam" type="Camera2D"]
+process_callback = 0
+script = ExtResource("1_54h1n")
