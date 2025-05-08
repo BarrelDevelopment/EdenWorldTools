@@ -1,4 +1,4 @@
-[gd_scene load_steps=2 format=3 uid="uid://c36uuid0g2cej"]
+[gd_scene load_steps=2 format=3 uid="uid://uqm5wc2jwaij"]
 
 [ext_resource type="Script" path="res://scripts/utilities/eden_world_canvas.gd" id="1_glmpk"]
 

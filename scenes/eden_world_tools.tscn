@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://bfj6adtraqjiw"]
 
-[ext_resource type="PackedScene" path="res://scenes/eden_world_viewer.tscn" id="1_bfd4b"]
-[ext_resource type="PackedScene" path="res://scenes/eden_world_cam.tscn" id="2_80oxl"]
+[ext_resource type="PackedScene" uid="uid://uqm5wc2jwaij" path="res://scenes/eden_world_viewer.tscn" id="1_bfd4b"]
+[ext_resource type="PackedScene" uid="uid://btoqxu5cuvf4" path="res://scenes/eden_world_cam.tscn" id="2_80oxl"]
 [ext_resource type="Script" path="res://scenes/canvas_layer.gd" id="3_apnam"]
 
 [sub_resource type="Theme" id="Theme_q5ns2"]
