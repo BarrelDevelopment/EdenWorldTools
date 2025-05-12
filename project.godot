@@ -14,8 +14,8 @@ config/name="EdenWorldTools"
 config/version="a.01"
 run/main_scene="res://scenes/eden_world_tools.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
-boot_splash/image="res://media/images/Landscape.png"
-config/icon="res://media/images/Icon.png"
+boot_splash/image="res://assets/images/Landscape.png"
+config/icon="res://assets/images/Icon.png"
 
 [editor]
 

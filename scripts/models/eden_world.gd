@@ -5,14 +5,13 @@ class_name EdenWorld
 var eden_file_name: String = ""
 var eden_file_name_suffix: String = ""
 var world_name: String = ""
-var create_date: int = 0 # UNIX timestamp
+var create_date: int = 0
 
-var chunks: Dictionary = {} # Simuliert Dictionary<int, Vector2>
-var area: Rect2 = Rect2()   # Entspricht System.Drawing.Rectangle
+var chunks: Dictionary = {} 
+var area: Rect2 = Rect2()  
 var sky_color: int = 0
 var world_data: PackedByteArray = PackedByteArray()
 
-# Computed property
 func get_eden_file_name() -> String:
 	return "%s.%s" % [eden_file_name, eden_file_name_suffix]
 
