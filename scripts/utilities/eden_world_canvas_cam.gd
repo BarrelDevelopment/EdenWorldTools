@@ -1,15 +1,15 @@
 extends Camera2D
 
-var zoomspeed = 100
-var zoommargin = 0.3
+var zoomspeed: int    = 100
+var zoommargin: float = 0.3
 
-@export var zoommin = 10.0
-@export var zoommax = 50.0
+@export var zoommin: float = 10.0
+@export var zoommax: float = 50.0
 
-var zoompos = Vector2()
-var zoomfactor = 1.0
+var zoompos: Vector2  = Vector2()
+var zoomfactor: float = 1.0
 
-var deadzone = 300
+var deadzone: int = 300
 
 var _previousPosition: Vector2 = Vector2(0, 0);
 var _moveCamera: bool = false;
