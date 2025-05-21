@@ -20,8 +20,7 @@
 
 
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/c180fe2c-657b-42cf-965a-15260413883d" alt="Eden World Tools" width="200" ></a>
-  <img src="https://github.com/user-attachments/assets/14bb802c-7f4f-4b25-a93f-f812d4118bc2"
+  <img src="https://github.com/user-attachments/assets/26e1d252-2649-4b63-9490-82c899c5b416" alt="Eden: Worldbuilder - Header">
 </p>
   
 ## Key Features
