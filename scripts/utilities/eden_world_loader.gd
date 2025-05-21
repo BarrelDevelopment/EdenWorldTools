@@ -39,7 +39,7 @@ func load(file_data: PackedByteArray) -> EdenWorld:
 	for i in range(40, 76):
 		if i < 40 or world.world_data[i] != 0:
 			name_array.append(world.world_data[i])
-	var name_string = name_array.get_string_from_ascii()
+	var name_string: String = name_array.get_string_from_ascii()
 	world.world_name = name_string.strip_edges()
 
 	# Chunks lesen

@@ -2,6 +2,8 @@ extends Node2D
 
 var defaultPixelSize : float = 1.0
 
+@onready var can = $TextureRect
+
 func _ready() -> void:
 	var fileData : PackedByteArray
 	#fileData = FileAccess.get_file_as_bytes("res:///mockupdata/1737689872.eden")
@@ -14,4 +16,6 @@ func _ready() -> void:
 	var edenWorldDrawer = EdenWorldDrawer.new()
 	edenWorldDrawer.world = edenWorld
 	edenWorldDrawer.create_world_image()
-	add_child(edenWorldDrawer)
+	#add_child(edenWorldDrawer)
+	can.texture = edenWorldDrawer.get_texture()
+	

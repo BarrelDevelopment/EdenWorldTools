@@ -3,6 +3,10 @@ extends Camera2D
 var zoomspeed: int    = 100
 var zoommargin: float = 0.3
 
+@onready var _popup_menu = $"../PopupMenu"
+
+var _last_mouse_pos : Vector2
+
 @export var zoommin: float = 10.0
 @export var zoommax: float = 50.0
 
@@ -20,6 +24,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	
 	zoom.x = lerp(zoom.x, zoom.x * zoomfactor, zoomspeed * delta)
 	zoom.y = lerp(zoom.y, zoom.y * zoomfactor, zoomspeed * delta)
 	
@@ -27,8 +32,11 @@ func _process(delta: float) -> void:
 	zoom.y = clamp(zoom.y, zoommin, zoommax)
 
 func _unhandled_input(event: InputEvent) -> void:
-	print("Function call: _input")
-	print("Variable -> bool: " + str(_moveCamera))
+	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
+		_last_mouse_pos = event.position
+		print("Mouse pos ->" + str(_last_mouse_pos))
+		_popup_menu.popup(Rect2i(_last_mouse_pos.x, _last_mouse_pos.y, 200, 200))
+	
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		get_viewport().set_input_as_handled();
 		if event.is_pressed():
