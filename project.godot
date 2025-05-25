@@ -17,6 +17,10 @@ config/features=PackedStringArray("4.3", "GL Compatibility")
 boot_splash/image="res://assets/images/Landscape.png"
 config/icon="res://assets/images/Icon.png"
 
+[autoload]
+
+EdenWorldToolsController="*res://scripts/utilities/eden_world_tools_controller.gd"
+
 [display]
 
 window/size/viewport_width=1080

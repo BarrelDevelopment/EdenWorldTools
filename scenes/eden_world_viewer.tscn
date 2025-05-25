@@ -1,11 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://uqm5wc2jwaij"]
+[gd_scene load_steps=3 format=3 uid="uid://uqm5wc2jwaij"]
 
 [ext_resource type="Script" path="res://scripts/utilities/eden_world_canvas.gd" id="1_glmpk"]
+[ext_resource type="PackedScene" uid="uid://btoqxu5cuvf4" path="res://scenes/eden_world_cam.tscn" id="2_emu8w"]
 
 [node name="EdenWorldViewer" type="Node2D"]
 
 [node name="EdenWorldCanvas" type="Node2D" parent="."]
 script = ExtResource("1_glmpk")
+worldFile = "res:///mockupdata/1736167506.eden"
 
 [node name="TextureRect" type="TextureRect" parent="EdenWorldCanvas"]
 anchors_preset = 15
@@ -14,3 +16,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 metadata/_edit_use_anchors_ = true
+
+[node name="EdenWorldCam" parent="." instance=ExtResource("2_emu8w")]
+zoommin = 0.1
+zoommax = 100.0

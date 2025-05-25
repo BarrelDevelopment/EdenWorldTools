@@ -3,9 +3,7 @@ extends Camera2D
 var zoomspeed: int    = 100
 var zoommargin: float = 0.3
 
-@onready var _popup_menu = $"../PopupMenu"
-
-var _last_mouse_pos : Vector2
+#var _last_mouse_pos : Vector2
 
 @export var zoommin: float = 10.0
 @export var zoommax: float = 50.0
@@ -33,9 +31,10 @@ func _process(delta: float) -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_RIGHT and event.is_pressed():
-		_last_mouse_pos = event.position
-		print("Mouse pos ->" + str(_last_mouse_pos))
-		_popup_menu.popup(Rect2i(_last_mouse_pos.x, _last_mouse_pos.y, 200, 200))
+		pass
+		#_last_mouse_pos = event.position
+		#print("Mouse pos ->" + str(_last_mouse_pos))
+		#_popup_menu.popup(Rect2i(_last_mouse_pos.x, _last_mouse_pos.y, 200, 200))
 	
 	if event is InputEventMouseButton && event.button_index == MOUSE_BUTTON_LEFT:
 		get_viewport().set_input_as_handled();

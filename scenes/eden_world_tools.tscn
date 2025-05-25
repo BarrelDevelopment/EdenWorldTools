@@ -1,26 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://bfj6adtraqjiw"]
+[gd_scene load_steps=5 format=3 uid="uid://bfj6adtraqjiw"]
 
-[ext_resource type="Script" path="res://scenes/eden_world_tools.gd" id="1_6spbh"]
 [ext_resource type="PackedScene" uid="uid://uqm5wc2jwaij" path="res://scenes/eden_world_viewer.tscn" id="1_bfd4b"]
-[ext_resource type="PackedScene" uid="uid://btoqxu5cuvf4" path="res://scenes/eden_world_cam.tscn" id="2_80oxl"]
+[ext_resource type="Script" path="res://scripts/utilities/eden_world_tools_controller.gd" id="1_wlsbn"]
+[ext_resource type="Script" path="res://scripts/utilities/eden_world_tools_ui.gd" id="3_74ibx"]
 [ext_resource type="PackedScene" uid="uid://basrqb6tocwql" path="res://scenes/eden__world_tools_ui.tscn" id="4_65oq5"]
-[ext_resource type="Script" path="res://scripts/utilities/popup_menu.gd" id="7_38mcx"]
 
-[node name="EdenWorldTools" type="Node2D"]
-script = ExtResource("1_6spbh")
-
-[node name="PopupMenu" type="PopupMenu" parent="."]
-script = ExtResource("7_38mcx")
+[node name="EdenWorldToolsController" type="Node"]
+script = ExtResource("1_wlsbn")
 
 [node name="EdenWorldViewer" parent="." instance=ExtResource("1_bfd4b")]
 
-[node name="EdenWorldCam" parent="." instance=ExtResource("2_80oxl")]
-zoommin = 0.1
-zoommax = 100.0
+[node name="EdenWorldToolsUI" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("3_74ibx")
+metadata/_edit_use_anchors_ = true
 
-[node name="CanvasLayerUI" type="CanvasLayer" parent="."]
+[node name="CanvasLayerUI" type="CanvasLayer" parent="EdenWorldToolsUI"]
 
-[node name="EdenWorldToolsUi" parent="CanvasLayerUI" instance=ExtResource("4_65oq5")]
+[node name="EdenWorldToolsUi" parent="EdenWorldToolsUI/CanvasLayerUI" instance=ExtResource("4_65oq5")]
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
